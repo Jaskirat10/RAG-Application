@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAG Chat</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>RAG Chat</h2>
+        <span class="model-badge">Gemini</span>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Documents</h3>
+        <div class="doc-actions">
+          <button id="btn-ingest-dir" class="btn btn-primary" title="Ingest all .md files from docs/ folder">
+            Ingest docs/
+          </button>
+          <label class="btn btn-secondary" title="Upload a markdown file">
+            Upload .md
+            <input type="file" id="file-upload" accept=".md" hidden />
+          </label>
+        </div>
+        <ul id="doc-list" class="doc-list">
+          <li class="empty-state">No documents ingested</li>
+        </ul>
+        <button id="btn-clear" class="btn btn-danger">Clear all</button>
+      </div>
+
+      <div class="sidebar-footer">
+        <button id="btn-new-chat" class="btn btn-ghost">New chat</button>
+      </div>
+    </aside>
+
+    <!-- Main chat area -->
+    <main class="chat-area">
+      <div id="messages" class="messages">
+        <div class="welcome">
+          <h1>Ask your documents</h1>
+          <p>Ingest markdown files from the sidebar, then start chatting.</p>
+        </div>
+      </div>
+
+      <form id="chat-form" class="input-bar">
+        <textarea
+          id="query-input"
+          placeholder="Ask a question about your documents..."
+          rows="1"
+          autofocus
+        ></textarea>
+        <button type="submit" id="send-btn" class="btn btn-send">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
