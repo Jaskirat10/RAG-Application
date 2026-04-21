@@ -10,3 +10,4 @@ build/
 .DS_Store
 node_modules/
 backend/chroma_db/
+customer-configs/
