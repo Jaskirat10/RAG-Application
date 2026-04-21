@@ -11,3 +11,4 @@ build/
 node_modules/
 backend/chroma_db/
 customer-configs/
+docs/
